@@ -1,8 +1,7 @@
 terraform {
   required_providers {
     tls-utils = {
-      version = "0.1.0"
-      source  = "hashicorp.com/ekristen/tls-utils"
+      source = "hashicorp.com/ekristen/tls-utils"
     }
   }
 }
@@ -14,10 +13,14 @@ data "host_thumbprint" "github" {
   provider = tls-utils
 }
 
-output "thumbprint_sha1" {
+output "thumbprint_id" {
   value = data.host_thumbprint.github.id
 }
 
-output "thumbprint_lower" {
-  value = data.host_thumbprint.github.lower
+output "thumbprint_sha1" {
+  value = data.host_thumbprint.github.sha1
+}
+
+output "thumbprint_md5" {
+  value = data.host_thumbprint.github.md5
 }

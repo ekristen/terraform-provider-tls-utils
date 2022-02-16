@@ -12,20 +12,8 @@ The host_thumbprint data source allows you to obtain the certificate thumbprint
 ## Example Usage
 
 ```terraform
-terraform {
-  required_providers {
-    tls-utils = {
-      version = "0.1.0"
-      source  = "hashicorp.com/ekristen/tls-utils"
-    }
-  }
-}
-
-provider "tls-utils" {}
-
-data "host_thumbprint" "github" {
+data "tls-utils-host_thumbprint" "github" {
   address  = "github.com"
-  provider = tls-utils
 }
 ```
 
@@ -41,3 +29,4 @@ In addition to all the arguments above, the following attributes are exported.
 
 - `id` - The fingerprint of the host certificate.
 - `sha1` - The SHA1 hash of the certificate.
+- `md5` - The MD5 hash of the certificate.
