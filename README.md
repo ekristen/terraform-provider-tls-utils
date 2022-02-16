@@ -1,49 +1,47 @@
-# Terraform Provider PGP
+# Terraform Provider - TLS Utils
 
-**Warning:** Use of this provider will result in secrets being in terraform state in **PLAIN TEXT** (aka **NOT ENCRYPTED**). You've been warned.
+At the moment this provides a single utility related to TLS which is `host_thumbprint` data source.
 
-There are use cases and situations where you need full access to all values generated within terraform, unfortunately there are some resources that force you to provide a PGP key and it will only encrypt and store those values, then manual commands must be run to decrypt.
-
-This provider allows you to generate a PGP or use an existing one, from there it provides encrypt and decrypt data sources to allow you to get access to the data.
+It allows the retrieving of a thumbprint of a certificate on a host.
 
 ## Build provider
 
 Run the following command to build the provider
 
 ```shell
-$ go build -o terraform-provider-pgp
+go build -o terraform-provider-tls-utils
 ```
 
 ## Local release build
 
 ```shell
-$ go install github.com/goreleaser/goreleaser@latest
+go install github.com/goreleaser/goreleaser@latest
 ```
 
 ```shell
-$ make release
+make release
 ```
 
-You will find the releases in the `/dist` directory. You will need to rename the provider binary to `terraform-provider-gpg` and move the binary into [the appropriate subdirectory within the user plugins directory](https://learn.hashicorp.com/tutorials/terraform/provider-use?in=terraform/providers#install-hashicups-provider).
+You will find the releases in the `/dist` directory. You will need to rename the provider binary to `terraform-provider-tls-utils` and move the binary into [the appropriate subdirectory within the user plugins directory](https://learn.hashicorp.com/tutorials/terraform/provider-use?in=terraform/providers#install-hashicups-provider).
 
 ## Test sample configuration
 
 First, build and install the provider.
 
 ```shell
-$ make install
+make install
 ```
 
 Then, navigate to the `examples` directory.
 
 ```shell
-$ cd examples
+cd examples
 ```
 
 Run the following command to initialize the workspace and apply the sample configuration.
 
 ```shell
-$ terraform init && terraform apply
+terraform init && terraform apply
 ```
 
 **Note:** you might have to remove the `.terraform.lock.hcl` file.
