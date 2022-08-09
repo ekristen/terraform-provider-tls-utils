@@ -1,6 +1,6 @@
 module github.com/ekristen/terraform-provider-tls-utils
 
-go 1.16
+go 1.19
 
 require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
